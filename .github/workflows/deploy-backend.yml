@@ -2,9 +2,10 @@ name: Deploy to Hugging Face Spaces
 
 on:
   push:
-    branches:
-      - backend  
-
+    branches: [ backend ]
+    paths:
+      - 'backend/**'
+      
 jobs:
   deploy:
     runs-on: ubuntu-latest
