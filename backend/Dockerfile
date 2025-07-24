@@ -12,6 +12,4 @@ COPY --chown=user . .
 RUN pip install --no-cache-dir -e .
 
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "7860"]
-
-
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "7860", "--reload", "--log-level", "debug"]

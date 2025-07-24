@@ -36,4 +36,4 @@ def recommend(request: RecommendationRequest):
         raise HTTPException(status_code=500, detail=str(ce))
     except Exception as e:
         logger.error(f"Unhandled Exception: {e}")
-        raise HTTPException(status_code=500, detail="Internal server error")
+        raise HTTPException(status_code=500, detail="No signal from qloo or LLM")
