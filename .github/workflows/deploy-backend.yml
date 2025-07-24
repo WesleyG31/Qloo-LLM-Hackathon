@@ -25,7 +25,7 @@ jobs:
           git clone https://huggingface.co/spaces/WesleyGonzales/qloo-hackaton-api space
           
           # Copia el contenido de tu repo al repo del Space (excepto .git)
-          rsync -av --exclude='.git' ./ space/
+          rsync -av --exclude='.git' --exclude='README.md' ./backend/ space/
           
           cd space
           git add .
