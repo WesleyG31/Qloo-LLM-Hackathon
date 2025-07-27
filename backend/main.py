@@ -5,6 +5,9 @@ from src.custom_exception import CustomException
 from core.recommendation import generate_recommendations
 import os
 
+from dotenv import load_dotenv
+load_dotenv()
+
 app = FastAPI()
 logger = get_logger("main")
 
@@ -19,21 +22,21 @@ class RecommendationRequest(BaseModel):
 
 @app.get("/")
 def root():
-    return {"message": "AI backend online."}
+    return {"message": "########## API - WORKING ##########"}
 
-@app.post("/recommend")
-def recommend(request: RecommendationRequest):
+@app.post("/recommend/")
+async def recommend(request: RecommendationRequest):
     try:
-        result = generate_recommendations(
-            prompt=request.prompt,
-            llm_model=LLM_MODEL,
-            openrouter_api_key=OPENROUTER_API_KEY,
-            qloo_api_key=QLOO_API_KEY
-        )
-        return result
-    except CustomException as ce:
-        logger.error(f"CustomException: {ce}")
-        raise HTTPException(status_code=500, detail=str(ce))
+        logger.info("#################### API ####################  Post -- recommend endpoint called")
+       # result = await generate_recommendations(
+        #    prompt=request.prompt,
+         #   llm_model=LLM_MODEL,
+          #  openrouter_api_key=OPENROUTER_API_KEY,
+           # qloo_api_key=QLOO_API_KEY
+        #)
+        logger.info("#################### API ####################  Post -- recommend endpoint called successfully")
+        #return result
+        return "Recommendations generated successfully"
     except Exception as e:
-        logger.error(f"Unhandled Exception: {e}")
-        raise HTTPException(status_code=500, detail="No signal from qloo or LLM")
+        logger.error(f"ERROR CALLING RECOMMEND ENDPOINT: {e}")
+        raise CustomException("ERROR CALLING RECOMMEND ENDPOINT", e)

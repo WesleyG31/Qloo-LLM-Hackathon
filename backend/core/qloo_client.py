@@ -7,6 +7,7 @@ logger = get_logger("qloo_client")
 
 async def fetch_qloo_recommendations(api_key: str, likes: list, dislikes: list, category: str) -> list:
     try:
+        logger.info("##### INITIALIZING QLOO_CLIENT.PY ##### ")
         headers = {
             "x-api-key": api_key,
             "Content-Type": "application/json"
@@ -20,7 +21,10 @@ async def fetch_qloo_recommendations(api_key: str, likes: list, dislikes: list, 
         async with httpx.AsyncClient(timeout=20) as client:
             response = await client.post("https://api.qloo.com/v1/recommend", json=payload, headers=headers)
             response.raise_for_status()
-            return response.json().get("recommendations", [])
+        
+            answer= response.json().get("recommendations", [])
+            logger.info("##### FINISHED -- INITIALIZING QLOO_CLIENT.PY ##### ")
+            return answer
     except Exception as e:
         logger.error(f"Qloo API error for category {category}: {e}")
         raise CustomException(f"Qloo API error for category {category}", e)
