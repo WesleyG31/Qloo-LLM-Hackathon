@@ -2,11 +2,13 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from src.logger import get_logger
 from src.custom_exception import CustomException
-from core.recommendation import generate_recommendations
+from core.recommendation_pipeline import generate_recommendations
 import os
 
-from dotenv import load_dotenv
-load_dotenv()
+# Locally -----
+#from dotenv import load_dotenv
+#load_dotenv()
+# Locally -----
 
 app = FastAPI()
 logger = get_logger("main")
@@ -28,15 +30,15 @@ def root():
 async def recommend(request: RecommendationRequest):
     try:
         logger.info("#################### API ####################  Post -- recommend endpoint called")
-       # result = await generate_recommendations(
-        #    prompt=request.prompt,
-         #   llm_model=LLM_MODEL,
-          #  openrouter_api_key=OPENROUTER_API_KEY,
-           # qloo_api_key=QLOO_API_KEY
-        #)
+        result = await generate_recommendations(
+            prompt=request.prompt,
+            llm_model=LLM_MODEL,
+            openrouter_api_key=OPENROUTER_API_KEY,
+            qloo_api_key=QLOO_API_KEY
+        )
         logger.info("#################### API ####################  Post -- recommend endpoint called successfully")
-        #return result
-        return "Recommendations generated successfully"
+        return result
+        #return "Recommendations generated successfully"
     except Exception as e:
         logger.error(f"ERROR CALLING RECOMMEND ENDPOINT: {e}")
         raise CustomException("ERROR CALLING RECOMMEND ENDPOINT", e)

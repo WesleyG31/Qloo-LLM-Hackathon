@@ -1,0 +1,160 @@
+{
+  "success": true,
+  "results": {
+    "tags": [
+      {
+        "tag_id": "urn:tag:keyword:qloo:reddit",
+        "name": "Reddit",
+        "types": [
+          "urn:entity:tv_show",
+          "urn:entity:podcast",
+          "urn:entity:movie"
+        ],
+        "subtype": "urn:tag:keyword:qloo",
+        "tag_value": "urn:tag:keyword:qloo:reddit",
+        "query": {
+          "affinity": 0.9898583594966761
+        }
+      },
+      {
+        "tag_id": "urn:tag:audience:qloo:internet_savvy",
+        "name": "Internet-Savvy",
+        "types": [
+          "urn:entity:artist",
+          "urn:entity:tv_show",
+          "urn:entity:podcast",
+          "urn:entity:movie"
+        ],
+        "subtype": "urn:tag:audience:qloo",
+        "tag_value": "urn:tag:audience:qloo:internet_savvy",
+        "query": {
+          "affinity": 0.9804185335232668
+        }
+      },
+      {
+        "tag_id": "urn:tag:archetype:qloo:destined_lovers",
+        "name": "Destined lovers",
+        "types": [
+          "urn:entity:tv_show",
+          "urn:entity:movie"
+        ],
+        "subtype": "urn:tag:archetype:qloo",
+        "tag_value": "urn:tag:archetype:qloo:destined_lovers",
+        "query": {
+          "affinity": 0.977895007711301
+        }
+      },
+      {
+        "tag_id": "urn:tag:character:qloo:stealthy",
+        "name": "Stealthy",
+        "types": [
+          "urn:entity:tv_show",
+          "urn:entity:movie"
+        ],
+        "subtype": "urn:tag:character:qloo",
+        "tag_value": "urn:tag:character:qloo:stealthy",
+        "query": {
+          "affinity": 0.9739242925925926
+        }
+      },
+      {
+        "tag_id": "urn:tag:artist:qloo:confident",
+        "name": "Confident",
+        "types": [
+          "urn:entity:artist"
+        ],
+        "subtype": "urn:tag:artist:qloo",
+        "tag_value": "urn:tag:artist:qloo:confident",
+        "query": {
+          "affinity": 0.973671935422602
+        }
+      },
+      {
+        "tag_id": "urn:tag:audience:qloo:young",
+        "name": "Young",
+        "types": [
+          "urn:entity:artist",
+          "urn:entity:tv_show",
+          "urn:entity:podcast",
+          "urn:entity:movie"
+        ],
+        "subtype": "urn:tag:audience:qloo",
+        "tag_value": "urn:tag:audience:qloo:young",
+        "query": {
+          "affinity": 0.9731205069515669
+        }
+      },
+      {
+        "tag_id": "urn:tag:keyword:qloo:social_media",
+        "name": "Social Media",
+        "types": [
+          "urn:entity:tv_show",
+          "urn:entity:podcast",
+          "urn:entity:movie"
+        ],
+        "subtype": "urn:tag:keyword:qloo",
+        "tag_value": "urn:tag:keyword:qloo:social_media",
+        "query": {
+          "affinity": 0.9725717351566951
+        }
+      },
+      {
+        "tag_id": "urn:tag:keyword:qloo:youtube",
+        "name": "YouTube",
+        "types": [
+          "urn:entity:tv_show",
+          "urn:entity:podcast",
+          "urn:entity:movie"
+        ],
+        "subtype": "urn:tag:keyword:qloo",
+        "tag_value": "urn:tag:keyword:qloo:youtube",
+        "query": {
+          "affinity": 0.9712318726210827
+        }
+      },
+      {
+        "tag_id": "urn:tag:subgenre:qloo:internet_culture",
+        "name": "Internet culture",
+        "types": [
+          "urn:entity:tv_show",
+          "urn:entity:podcast",
+          "urn:entity:movie"
+        ],
+        "subtype": "urn:tag:subgenre:qloo",
+        "tag_value": "urn:tag:subgenre:qloo:internet_culture",
+        "query": {
+          "affinity": 0.9693269383523266
+        }
+      },
+      {
+        "tag_id": "urn:tag:plot:qloo:predictable",
+        "name": "Predictable",
+        "types": [
+          "urn:entity:tv_show",
+          "urn:entity:movie"
+        ],
+        "subtype": "urn:tag:plot:qloo",
+        "tag_value": "urn:tag:plot:qloo:predictable",
+        "query": {
+          "affinity": 0.9689216117758784
+        }
+      }
+    ]
+  },
+  "query": {
+    "localities": {
+      "signal": {
+        "entity_id": "215D0B2A-7C9D-4A99-A11F-4F9253EC5EF9",
+        "name": "San Francisco",
+        "subtype": "urn:entity:locality",
+        "location": {
+          "lat": 37.75985706775193,
+          "lon": -122.69405089607115
+        },
+        "popularity": 0.99917555,
+        "disambiguation": "San Francisco, California, United States of America"
+      }
+    }
+  },
+  "duration": 375
+}
