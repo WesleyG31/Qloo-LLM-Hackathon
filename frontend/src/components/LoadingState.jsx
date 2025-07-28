@@ -1,0 +1,28 @@
+import React from 'react';
+import { Film, Sparkles } from 'lucide-react';
+
+export default function LoadingState() {
+  return (
+    <div className="flex flex-col items-center justify-center py-16">
+      <div className="relative mb-6">
+        <Film className="w-16 h-16 text-purple-500 animate-pulse" />
+        <Sparkles className="w-6 h-6 text-yellow-400 absolute -top-2 -right-2 animate-bounce" />
+      </div>
+      <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-2">
+        Finding Perfect Movies for You
+      </h3>
+      <p className="text-gray-600 dark:text-gray-400 text-center max-w-md">
+        Our AI is analyzing your preferences and searching through thousands of movies...
+      </p>
+      <div className="flex gap-1 mt-6">
+        {[0, 1, 2].map((i) => (
+          <div
+            key={i}
+            className="w-2 h-2 bg-purple-500 rounded-full animate-bounce"
+            style={{ animationDelay: `${i * 0.2}s` }}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
