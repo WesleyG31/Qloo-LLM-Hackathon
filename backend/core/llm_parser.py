@@ -50,6 +50,8 @@ async def extract_preferences(mensaje: str, model: str, api_key: str) -> dict:
                         - If age or location is missing, do not guess.
                         - Always return a valid JSON (no markdown, no explanations).
 
+                        Respond only in valid JSON format with double quotes for all keys and strings.
+
                         User input:
                         {document}
                         """
@@ -79,16 +81,20 @@ async def extract_preferences(mensaje: str, model: str, api_key: str) -> dict:
         raise CustomException("ERROR INITIALIZING LLM PARSER.PY", e)
 
 
+def force_json_quotes(text):
+    return re.sub(r'(?<=\{|\s)(\w+)(?=\s*:)', r'"\1"', text)
+
 def clean_llm_json_output(llm_output: str) -> dict:
     try:
         logger.info("##### INITIALIZING LLM_PARSER.PY - clean_llm_json_output ##### ")
         cleaned = re.sub(r"```json|```", "", llm_output).strip()
-        returned= json.loads(cleaned)
+        cleaned = force_json_quotes(cleaned)
+        returned = json.loads(cleaned)
         logger.info("##### FINISHED -- INITIALIZING LLM_PARSER.PY - clean_llm_json_output ##### ")
         return returned      
     except Exception as e:
-        logger.error(f"ERROR INITIALIZING LLM PARSER.PY - clean_llm_json_output : {e}")
-        raise CustomException("ERROR INITIALIZING LLM PARSER.PY - clean_llm_json_output", e)
+        logger.error(f"ERROR INITIALIZING LLM_PARSER.PY - clean_llm_json_output : {e}")
+        raise CustomException("ERROR INITIALIZING LLM_PARSER.PY - clean_llm_json_output", e)
     
 def flatten_qloo_payload(payload: dict) -> dict:
         try:
@@ -120,3 +126,21 @@ def flatten_qloo_payload(payload: dict) -> dict:
         except Exception as e:
                 logger.error(f"ERROR INITIALIZING LLM PARSER.PY - flatten_qloo_payload : {e}")
                 raise CustomException("ERROR INITIALIZING LLM PARSER.PY - flatten_qloo_payload", e)
+
+
+def is_valid_qloo_payload(payload: dict) -> (bool, str):
+    if not isinstance(payload, dict):
+        return False, "The response is not a valid JSON object."
+
+    has_location = "signal.location.query" in payload and bool(payload["signal.location.query"])
+    has_entities = any(k.startswith("signal.interests.entities") for k in payload)
+    has_tags = any(k.startswith("signal.interests.tags") for k in payload)
+
+    if not (has_location or has_entities or has_tags):
+        return False, (
+            "Please specify at least a location (e.g., 'New York'), "
+            "a cultural interest (e.g., a movie, artist, or video game), or a tag."
+        )
+
+    return True, ""
+

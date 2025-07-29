@@ -6,9 +6,9 @@ from core.recommendation_pipeline import generate_recommendations
 import os
 
 # Locally -----
-#from dotenv import load_dotenv
-#load_dotenv()
-# Locally -----
+from dotenv import load_dotenv
+load_dotenv()
+# Locally ------
 
 app = FastAPI()
 logger = get_logger("main")
