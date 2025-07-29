@@ -1,5 +1,5 @@
 import React from "react";
-import { Film } from "lucide-react";
+import { Brain } from "lucide-react";
 
 export default function Header() {
   return (
@@ -8,14 +8,14 @@ export default function Header() {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center gap-3">
             <div className="p-2 bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl">
-              <Film className="w-6 h-6 text-white" />
+              <Brain className="w-6 h-6 text-white" />
             </div>
             <div>
               <h1 className="text-xl font-bold text-gray-900 dark:text-white">
-                MovieMatch
+                Cultural Intelligence Assistant
               </h1>
               <p className="text-xs text-gray-500 dark:text-gray-400">
-                AI-Powered Movie Recommendations
+                AI-Powered Cultural Insights & Recommendations
               </p>
             </div>
           </div>

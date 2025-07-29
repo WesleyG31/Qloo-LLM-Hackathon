@@ -1,15 +1,15 @@
+// services/api.js
+
 export async function fetchRecommendations(prompt) {
   try {
-    const response = await fetch(
-      "https://wesleygonzales-qloo-hackaton-api.hf.space/recommend/",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ prompt }),
-      }
-    );
+    const url = `https://wesleygonzales-qloo-hackaton-api.hf.space/`;
+
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
     if (!response.ok) {
       const errorText = await response.text();

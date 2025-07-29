@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
-import { Send, Sparkles } from 'lucide-react';
-
+import React, { useState } from "react";
+import { Send, Sparkles } from "lucide-react";
 
 export default function Recommender({ onSubmit, isLoading }) {
-  const [preferences, setPreferences] = useState('');
+  const [preferences, setPreferences] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -13,10 +12,8 @@ export default function Recommender({ onSubmit, isLoading }) {
   };
 
   const examplePrompts = [
-    "I love sci-fi movies like Interstellar and Blade Runner",
-    "I'm studying psychology and enjoy mind-bending thrillers",
-    "I want feel-good comedies similar to The Grand Budapest Hotel",
-    "I'm into horror movies but nothing too gory"
+    "I'm writing a web series for Gen Z girls in NYC who are obsessed with astrology, TikTok aesthetics, and indie romance films.",
+    "Looking for game concept ideas for millennial men in Berlin who love cyberpunk, underground techno, and glitch art.",
   ];
 
   return (
@@ -47,7 +44,9 @@ export default function Recommender({ onSubmit, isLoading }) {
       <div className="mt-6">
         <div className="flex items-center gap-2 mb-3">
           <Sparkles className="w-4 h-4 text-purple-500" />
-          <span className="text-sm font-medium text-gray-600 dark:text-gray-400">Try these examples:</span>
+          <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
+            Try these examples:
+          </span>
         </div>
         <div className="flex flex-wrap gap-2">
           {examplePrompts.map((prompt, index) => (
