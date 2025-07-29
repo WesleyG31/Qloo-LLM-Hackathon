@@ -91,8 +91,9 @@ You'll receive a recommendation including:
     "tags": ["indie", "experimental film", "internet culture"]
   }
 }
-
+```
 ---
+
 ## Setup instruccions 
 
 1. Clone the repo
