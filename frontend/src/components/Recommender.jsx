@@ -14,28 +14,29 @@ export default function Recommender({ onSubmit, isLoading }) {
   const examplePrompts = [
     "I'm writing a web series for Gen Z girls in NYC who are obsessed with astrology, TikTok aesthetics, and indie romance films.",
     "Looking for game concept ideas for millennial men in Berlin who love cyberpunk, underground techno, and glitch art.",
+    "Designing a mobile game for teenage girls in Seoul who follow K-pop, webtoons, kawaii culture, and value friendship and self-expression in their entertainment.",
   ];
 
   return (
-    <div className="w-full max-w-4xl mx-auto">
+    <div className="w-full max-w-4xl mx-auto px-4 sm:px-6">
       <form onSubmit={handleSubmit} className="relative">
         <div className="relative">
           <textarea
             value={preferences}
             onChange={(e) => setPreferences(e.target.value)}
             placeholder="Tell me about your movie preferences, favorite genres, or movies you love..."
-            className="w-full p-6 pr-16 text-lg text-gray-200 bg-gray-800 border border-gray-700 rounded-2xl shadow-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none transition-all duration-200 min-h-[120px] max-h-[200px]"
+            className="w-full p-4 sm:p-6 pr-14 sm:pr-16 text-base sm:text-lg text-gray-200 bg-gray-800 border border-gray-700 rounded-2xl shadow-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none transition-all duration-200 min-h-[120px] max-h-[200px]"
             disabled={isLoading}
           />
           <button
             type="submit"
             disabled={!preferences.trim() || isLoading}
-            className="absolute bottom-4 right-4 p-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl hover:from-purple-700 hover:to-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 transform hover:scale-105 active:scale-95"
+            className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 p-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl hover:from-purple-700 hover:to-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 transform hover:scale-105 active:scale-95"
           >
             {isLoading ? (
-              <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin" />
+              <div className="w-5 h-5 sm:w-6 sm:h-6 border-2 border-white border-t-transparent rounded-full animate-spin" />
             ) : (
-              <Send className="w-6 h-6" />
+              <Send className="w-5 h-5 sm:w-6 sm:h-6" />
             )}
           </button>
         </div>
@@ -48,13 +49,13 @@ export default function Recommender({ onSubmit, isLoading }) {
             Try these examples:
           </span>
         </div>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-col sm:flex-row flex-wrap gap-2">
           {examplePrompts.map((prompt, index) => (
             <button
               key={index}
               onClick={() => setPreferences(prompt)}
               disabled={isLoading}
-              className="text-sm px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-purple-100 dark:hover:bg-purple-900 hover:text-purple-700 dark:hover:text-purple-300 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="text-sm px-4 py-2 w-full sm:w-auto break-words bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-purple-100 dark:hover:bg-purple-900 hover:text-purple-700 dark:hover:text-purple-300 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {prompt}
             </button>

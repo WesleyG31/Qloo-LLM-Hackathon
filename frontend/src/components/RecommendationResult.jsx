@@ -29,20 +29,20 @@ export default function RecommendationResult({ data, onReset }) {
 
   return (
     <div
-      className={`mt-8 bg-gray-800  p-6 rounded-2xl shadow-lg border border-gray-700 transition-opacity duration-700 ${
+      className={`mt-8 bg-gray-800 p-4 sm:p-6 rounded-2xl shadow-lg border border-gray-700 transition-opacity duration-700 ${
         isVisible ? "opacity-100" : "opacity-0"
       }`}
     >
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="text-xl text-gray-100 font-semibold flex items-center gap-2">
-          <Star className="w-6 h-6 text-yellow-400" />
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4">
+        <h2 className="text-lg sm:text-xl text-gray-100 font-semibold flex items-center gap-2">
+          <Star className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-400" />
           Recommendations
         </h2>
 
-        <div className="flex gap-2">
+        <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
           <button
             onClick={handleCopy}
-            className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-600 to-blue-600  hover:from-purple-700 hover:to-blue-700 rounded-xl text-white transition-all duration-200 transform hover:scale-105 active:scale-95"
+            className="flex items-center justify-center gap-2 px-4 py-2 text-sm sm:text-base bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 rounded-xl text-white transition-all duration-200 transform hover:scale-105 active:scale-95 w-full sm:w-auto"
             title="Copy to clipboard"
           >
             <ClipboardCopy className="w-5 h-5" />
@@ -51,7 +51,7 @@ export default function RecommendationResult({ data, onReset }) {
 
           <button
             onClick={handleTryAgain}
-            className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white rounded-xl transition-all duration-200 transform hover:scale-105 active:scale-95"
+            className="flex items-center justify-center gap-2 px-4 py-2 text-sm sm:text-base bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white rounded-xl transition-all duration-200 transform hover:scale-105 active:scale-95 w-full sm:w-auto"
             title="New Search"
           >
             <RefreshCw className="w-5 h-5" />
@@ -60,7 +60,7 @@ export default function RecommendationResult({ data, onReset }) {
         </div>
       </div>
 
-      <pre className="text-gray-100 whitespace-pre-wrap max-w-none overflow-x-auto">
+      <pre className="text-sm sm:text-base text-gray-100 whitespace-pre-wrap overflow-x-auto max-w-full">
         {data.error ? data.message || data.error : textToCopy}
       </pre>
     </div>
