@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from src.logger import get_logger
 from src.custom_exception import CustomException
@@ -37,7 +38,7 @@ async def recommend(request: RecommendationRequest):
             qloo_api_key=QLOO_API_KEY
         )
         logger.info("#################### API ####################  Post -- recommend endpoint called successfully")
-        return result
+        return JSONResponse(content=result)
         #return "Recommendations generated successfully"
     except Exception as e:
         logger.error(f"ERROR CALLING RECOMMEND ENDPOINT: {e}")
