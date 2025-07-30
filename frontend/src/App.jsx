@@ -17,7 +17,7 @@ export default function App() {
     setRecommendation(null);
 
     const { data, error, message } = await fetchRecommendations(input);
-    console.log("fetchRecommendations response:", { data, error, message });
+   /*  console.log("fetchRecommendations response:", { data, error, message }); */
 
     if (error) {
       console.error("Error:", message || error);
