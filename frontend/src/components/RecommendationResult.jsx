@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { RefreshCw, ClipboardCopy, Star } from "lucide-react";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
 
 export default function RecommendationResult({ data, onReset }) {
   const [copied, setCopied] = useState(false);
@@ -15,15 +13,8 @@ export default function RecommendationResult({ data, onReset }) {
 
   if (!data) return null;
 
-  if (data.error) {
-    return (
-      <div className="mt-8 bg-red-100 text-red-800 p-4 rounded-lg shadow">
-        <strong>Error:</strong> {data.error}
-      </div>
-    );
-  }
-
-  const textToCopy = typeof data === "string" ? data : JSON.stringify(data, null, 2);
+  const textToCopy =
+    typeof data === "string" ? data : JSON.stringify(data, null, 2);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(textToCopy).then(() => {
@@ -69,11 +60,9 @@ export default function RecommendationResult({ data, onReset }) {
         </div>
       </div>
 
-      <div className="text-gray-100 prose prose-invert max-w-none overflow-x-auto">
-        <ReactMarkdown remarkPlugins={[remarkGfm]}>
-          {textToCopy}
-        </ReactMarkdown>
-      </div>
+      <pre className="text-gray-100 whitespace-pre-wrap max-w-none overflow-x-auto">
+        {data.error ? data.message || data.error : textToCopy}
+      </pre>
     </div>
   );
 }
