@@ -13,21 +13,22 @@ export default function App() {
   const [recommendation, setRecommendation] = useState(null);
 
   const handlePreferenceSubmit = async (input) => {
-    setIsLoading(true);
-    setRecommendation(null);
+  setIsLoading(true);
+  setRecommendation(null);
 
-    const { data, error, message } = await fetchRecommendations(input);
-   /*  console.log("fetchRecommendations response:", { data, error, message }); */
+  const { data, error, message } = await fetchRecommendations(input);
+  console.log("fetchRecommendations response:", { data, error, message });
 
-    if (error) {
-      console.error("Error:", message || error);
-      setRecommendation({ error: message || "Unknown error" });
-    } else {
-      setRecommendation(data);
-    }
+  if (error) {
+    console.error("Error:", message || error);
+    setRecommendation({ error: true, message: message || "Unknown error" });
+  } else {
+    setRecommendation({ data, message }); 
+  }
 
-    setIsLoading(false);
-  };
+  setIsLoading(false);
+};
+
 
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 transition-colors duration-200">
